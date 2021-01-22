@@ -1,0 +1,250 @@
+Javascript components.
+
+BUTTONS
+-------
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
+
+
+CHECKBOXES
+----------
+<script>
+function myFunction() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("text");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
+
+FORMULA FOR RANDOM PASSWORD GENERATION
+--------------------------------------
+
+
+
+
+The password can include special characters. 
+If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
+
+
+GIVEN I need a new, secure password
+WHEN I click the button to generate a password
+THEN I am presented with a series of prompts for password criteria
+WHEN prompted for password criteria
+THEN I select which criteria to include in the password
+WHEN prompted for the length of the password
+THEN I choose a length of at least 8 characters and no more than 128 characters
+WHEN prompted for character types to include in the password
+THEN I choose lowercase, uppercase, numeric, and/or special characters
+WHEN I answer each prompt
+THEN my input should be validated and at least one character type should be selected
+WHEN all prompts are answered
+THEN a password is generated that matches the selected criteria
+WHEN the password is generated
+THEN the password is either displayed in an alert or written to the page
+
+
+
+========================
+
+First Act: Setting the parameters
+
+0 ASK USER FOR length => first pop-up (sets lenght of password 8-128) https://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt
+
+var length
+
+
+1 ASK USER FOR lowercase = Second pop-up (gets it from first set of data) https://www.w3schools.com/js/tryit.asp?filename=tryjs_confirm
+2 ASK USER FOR uppercase = Third Pop-up ( Gets it from second set of data) https://www.w3schools.com/js/tryit.asp?filename=tryjs_confirm
+3 ASK USER FOR NUMBERS = Fourth pop-up (Gets it from third set of data) https://www.w3schools.com/js/tryit.asp?filename=tryjs_confirm
+4 ASK USER FOR SPECIAL character Fifth pop-up (gets it from fourth set of data) https://www.w3schools.com/js/tryit.asp?filename=tryjs_confirm
+
+Second Act
+
+Script takes in all the paramaters and makes a "Character Salad"
+
+1) Input the # of characters
+2) Take in the parameters from 1-4 (true or false)
+3) 
+
+
+Third Act
+
+Posts the end result in either a pop-up box or a display on site. recommend the 
+
+
+
+Ingredients: 
+
+- 5 Pop-up boxes
+- 4 sets of characters
+- 
+
+
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+  alert("I am an alert box!");
+
+
+var CHARACTER_SETS = [
+	[true, "Numbers", "0123456789"],
+	[true, "Lowercase", "abcdefghijklmnopqrstuvwxyz"],
+	[false, "Uppercase", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
+	[false, "ASCII symbols", "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"],
+	[false, "Space", " "],
+
+
+<button onclick="passGen()">GENERATE PASSWORD</button>
+
+function passGen() {
+  var txt;
+if (confirm ( " step 1")) {
+  txt = "you pressed ok"
+}
+
+}
+
+  
+var x = 10;
+x += 5;
+document.getElementById("demo").innerHTML = x;
+
+
+
+const num1 = parseInt(prompt('Enter the first number '));
+const num2 = parseInt(prompt('Enter the second number '));
+
+//add two numbers
+const sum = num1 + num2;
+
+// display the sum
+console.log(`The sum of ${num1} and ${num2} is ${sum}`);
+
+
+<button onclick="passGEN()">GENERATE PASSWORD</button>
+
+<p id="passGEN"></p>
+
+<script>
+function myFunction() {
+  var txt;
+  var person = prompt("please add a number:", "0");
+  if (person == null || person == "") {
+    txt = "User cancelled the prompt.";
+  } else {
+    var x = 5 * 4;
+    x += person;
+  }
+  document.getElementById("passGEN").innerHTML = x;
+}
+</script>
+
+
+function generatePassword() {
+    var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
+
+
+______________________
+
+Math for password GENERATION
+
+Math.random().toString(36).slice(2)
+
+----------------------
+
+function password_generator( len ) {
+    var length = (len)?(len):(10);
+    var string = "abcdefghijklmnopqrstuvwxyz"; //to upper 
+    var numeric = '0123456789';
+    var punctuation = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+    var password = "";
+    var character = "";
+    var crunch = true;
+    while( password.length<length ) {
+        entity1 = Math.ceil(string.length * Math.random()*Math.random());
+        entity2 = Math.ceil(numeric.length * Math.random()*Math.random());
+        entity3 = Math.ceil(punctuation.length * Math.random()*Math.random());
+        hold = string.charAt( entity1 );
+        hold = (password.length%2==0)?(hold.toUpperCase()):(hold);
+        character += hold;
+        character += numeric.charAt( entity2 );
+        character += punctuation.charAt( entity3 );
+        password = character;
+    }
+    password=password.split('').sort(function(){return 0.5-Math.random()}).join('');
+    return password.substr(0,len);
+}
+
+console.log( password_generator() );
+
+
+
+document.querySelector("#password"); THIS IS WHERE YOUR PASSWORD IS GOING!!
+
+=================================================
+
+// character sets
+var charsLower = "abcdefghijklmnopqrstuvwxyz"
+var charsUpper = charsLower.toUpperCase()
+var charsNumbers = "012345679"
+var charsSpecial = "!@#$%^&*()_+"
+// TODO from user prompt
+var userLength = 10
+// TODO userLower/userUpper/userNums/userSpecial from confirm boxes.
+var userLower = userUpper = userNums = userSpecial = true
+// build the random picker string based on user prompts
+var charSet =( userLower ? charsLower : '' )
+            +( userUpper ? charsUpper : '' )
+            +( userNums  ? charsNumbers : '' )
+            +( userSpecial ? charsSpecial : '' )
+// generate the string
+var password = ""
+for( var i=0; i<userLength; i++ ){
+    var charPick = Math.floor(Math.random()*charSet.length)
+    password += charSet[charPick]
+}
+// now plug this into the DOM
+document.querySelector(".answer").value = password
+
+
+<p id="passgen"></p>
+
+<script>
+
+function myFunction() {
+  var txt;
+  var number = prompt("");
+  if (number ==null || number == "") {txt = "User cancelled the prompt";}
+  
+}
+
+function myFunction1() {
+
+}
+
+function myFunction2() {
+
+}
+
+function myFunction3() {
+
+}
+
+</script>
