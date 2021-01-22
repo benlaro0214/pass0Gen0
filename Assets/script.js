@@ -16,12 +16,16 @@ function writePassword() {
 // Use true of false since they are prompt boxes. https://www.w3schools.com/js/js_if_else.asp
 
 function generatePassword(){
-
-
-}
-
-
-
+  var txt;
+  var number = prompt("Please Enter a number between 8-128 Characters:", "8");
+  if (number == null || number == "") {
+    txt = "User cancelled the prompt.";
+  } else {
+    (confirm("Click Ok for lower Characters"));
+    
+  }
+    
+  }
 
 
 // Add event listener to generate button
