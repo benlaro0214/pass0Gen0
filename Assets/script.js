@@ -13,10 +13,8 @@ function start() {
    var passwordText = document.querySelector("#password");
    passwordText.value = password;
 }
-//return a string
-function generatePassword() {
- 
   //Creating arrays from spreads.
+function generatePassword() {
    var specialCharacters = Array.from ("!@#$%^&*()_+")
    var numericCharacters = Array.from ("0123456789")
    var lowerCasedCharacters = Array.from ("abcdefghijklmnopqrstuvwxyz")
@@ -24,7 +22,7 @@ function generatePassword() {
    var userOptionalChars = [];
    var passwordLength = parseInt(prompt("Please use a lenghth between 8 and 128!"));
    
-   // ======= functions definition (user picks and chooses the lenght, the type of characters to use prior to the generation of the password.) ======
+   // functions definition (user picks and chooses the lenght, the type of characters to use prior to the generation of the password.) 
    
    // determine the lenght of the requested password
    function getUserOptions() {
@@ -61,7 +59,6 @@ function generatePassword() {
             }
         }
     }
-
     //This part is where the user arrays are being concated into a loop.
     function generatePassword(userOptions) {
       var password = [];
