@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 // Set our global vars - Set user choices to false first. That way the user's choice can be set to true as defined.
 var userOptions = {
     ExSpeChars: false,
-    ExNumChar: false,
+    ExNumChars: false,
     ExUpperChars: false,
     ExLowerChars: false,
   };
@@ -22,41 +22,41 @@ function generatePassword() {
    var lowerCasedCharacters = Array.from ("abcdefghijklmnopqrstuvwxyz")
    var upperCasedCharacters = Array.from ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
    var userOptionalChars = [];
-   var passwordLength = parseInt(prompt("How many characters would you like your passsword to contain? It should be longer than 8 and shorter than 128!"));
+   var passwordLength = parseInt(prompt("Please use a lenghth between 8 and 128!"));
    
    // ======= functions definition (user picks and chooses the lenght, the type of characters to use prior to the generation of the password.) ======
    
    // determine the lenght of the requested password
    function getUserOptions() {
       if (passwordLength < 8 || passwordLength > 128){
-        alert("Please put in a length that is longer than 8 and shorter than 128!");
+        alert("Please use a lenghth between 8 and 128!!");
        getUserOptions();
       } else if (8 < passwordLength < 128){
   
   // The following are the user options that will me set to true (from an earlier section where the global vars were set as false) 
   
-        var lowerConfirm = confirm("Do you want it to contain lower case characters?");
+        var lowerConfirm = confirm("Click OK for lower case characters.");
       if (lowerConfirm){
       userOptions.ExLowerChars = true;
       }
-      var upperConfirm = confirm("Do you want it to contain upper case characters?");
+      var upperConfirm = confirm("Click OK for upper case characters.");
       if (upperConfirm){
       userOptions.ExUpperChars = true;
       }
-      var specialConfirm = confirm("Do you want it to contain special case characters?");
+      var specialConfirm = confirm("Click OK for special case characters.");
       if (specialConfirm){
       userOptions.ExSpeChars = true;
       }
-      var numericConfirm = confirm("Do you want it to contain numbers?");
+      var numericConfirm = confirm("Click OK for numbers.");
       if (numericConfirm){
-      userOptions.ExNumChar = true;
+      userOptions.ExNumChars = true;
       }
 
       if (lowerConfirm == true || upperConfirm == true || specialConfirm == true || numericConfirm == true){
-          alert("Great! You have selected one or more of the prompts to create your password!");
+          alert("Click OK to finally generate your password.");
       }
       else {
-          alert("Select one of the choices to generate your password!");
+          alert("Please choose one of the options!");
           getUserOptions();
             }
         }
