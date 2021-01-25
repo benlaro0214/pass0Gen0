@@ -2,10 +2,10 @@
 var generateBtn = document.querySelector("#generate");
 // Set our global vars - Set user choices to false first. That way the user's choice can be set to true as defined.
 var userOptions = {
-    expectSpecialChars: false,
-    expectNumericChars: false,
-    expectUppercaseChars: false,
-    expectLowercaseChars: false,
+    ExSpeChars: false,
+    ExNumChar: false,
+    ExUpperChars: false,
+    ExLowerChars: false,
   };
 // Write password to the #password input
 function start() {
@@ -24,27 +24,32 @@ function generatePassword() {
    var userOptionalChars = [];
    var passwordLength = parseInt(prompt("How many characters would you like your passsword to contain? It should be longer than 8 and shorter than 128!"));
    
-   // ======= functions definition ======
+   // ======= functions definition (user picks and chooses the lenght, the type of characters to use prior to the generation of the password.) ======
+   
+   // determine the lenght of the requested password
    function getUserOptions() {
       if (passwordLength < 8 || passwordLength > 128){
         alert("Please put in a length that is longer than 8 and shorter than 128!");
        getUserOptions();
       } else if (8 < passwordLength < 128){
-      var lowerConfirm = confirm("Do you want it to contain lower case characters?");
+  
+  // The following are the user options that will me set to true (from an earlier section where the global vars were set as false) 
+  
+        var lowerConfirm = confirm("Do you want it to contain lower case characters?");
       if (lowerConfirm){
-      userOptions.expectLowercaseChars = true;
+      userOptions.ExLowerChars = true;
       }
       var upperConfirm = confirm("Do you want it to contain upper case characters?");
       if (upperConfirm){
-      userOptions.expectUppercaseChars = true;
+      userOptions.ExUpperChars = true;
       }
       var specialConfirm = confirm("Do you want it to contain special case characters?");
       if (specialConfirm){
-      userOptions.expectSpecialChars = true;
+      userOptions.ExSpeChars = true;
       }
       var numericConfirm = confirm("Do you want it to contain numbers?");
       if (numericConfirm){
-      userOptions.expectNumericChars = true;
+      userOptions.ExNumChar = true;
       }
 
       if (lowerConfirm == true || upperConfirm == true || specialConfirm == true || numericConfirm == true){
@@ -57,28 +62,28 @@ function generatePassword() {
         }
     }
 
-     //number crunching department
+    //This part is where the user arrays are being concated into a loop.
     function generatePassword(userOptions) {
       var password = [];
       var optionsArray = [];
       var solved = '';
-      if (userOptions.expectLowercaseChars == true){
+      if (userOptions.ExLowerChars == true){
         userOptionalChars.push(lowerCasedCharacters);
       }
-      if (userOptions.expectUppercaseChars == true){
+      if (userOptions.ExUpperChars == true){
         userOptionalChars.push(upperCasedCharacters);
       }
-      if (userOptions.expectSpecialChars == true){
+      if (userOptions.ExSpeChars == true){
         userOptionalChars.push(specialCharacters);
       }
-      if (userOptions.expectNumericChars == true){
+      if (userOptions.ExNumChar == true){
         userOptionalChars.push(numericCharacters);
       }
      
       for (var h = 0; h < userOptionalChars.length; h++){
         optionsArray = optionsArray.concat(userOptionalChars[h]);
       }
-
+// This, is where the results from the array get processed through some
       var length = optionsArray.length;
       for (var i = 0; i < passwordLength; i++){
           password.push(optionsArray[Math.floor(Math.random() * length) + 1 ]);
